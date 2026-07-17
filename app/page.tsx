@@ -99,52 +99,21 @@ export default function Portfolio() {
   ];
 
   const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.05
-      }
-    }
-  };
-
-  const itemVariants = {
     hidden: { opacity: 0, y: 10 },
-    visible: { opacity: 1, y: 0 }
+    visible: {
+      opacity: 1, y: 0,
+      transition: { duration: 0.3 }
+    }
   };
 
   return (
     <div className="min-h-screen bg-[#0D1117] text-slate-200 font-sans selection:bg-cyan-500/30 overflow-x-hidden relative">
       
-      {/* Animated Background Blobs */}
+      {/* Static Background Glows (Optimized for Performance) */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
-        <motion.div 
-          animate={{ 
-            scale: [1, 1.2, 1],
-            rotate: [0, 90, 0],
-            opacity: [0.1, 0.2, 0.1]
-          }}
-          transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
-          className="absolute -top-40 -left-40 w-96 h-96 bg-cyan-600 rounded-full mix-blend-screen filter blur-[100px]"
-        />
-        <motion.div 
-          animate={{ 
-            scale: [1, 1.3, 1],
-            rotate: [0, -90, 0],
-            opacity: [0.1, 0.2, 0.1]
-          }}
-          transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-          className="absolute top-1/3 -right-20 w-[500px] h-[500px] bg-indigo-600 rounded-full mix-blend-screen filter blur-[120px]"
-        />
-        <motion.div 
-          animate={{ 
-            scale: [1, 1.1, 1],
-            x: [0, 100, 0],
-            opacity: [0.1, 0.15, 0.1]
-          }}
-          transition={{ duration: 25, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute -bottom-40 left-1/3 w-[600px] h-[600px] bg-fuchsia-600 rounded-full mix-blend-screen filter blur-[150px]"
-        />
+        <div className="absolute -top-40 -left-40 w-96 h-96 bg-cyan-600/20 rounded-full filter blur-[100px]" />
+        <div className="absolute top-1/3 -right-20 w-[500px] h-[500px] bg-indigo-600/20 rounded-full filter blur-[120px]" />
+        <div className="absolute -bottom-40 left-1/3 w-[600px] h-[600px] bg-fuchsia-600/20 rounded-full filter blur-[150px]" />
       </div>
 
       {/* Navigation */}
@@ -281,7 +250,7 @@ export default function Portfolio() {
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true, margin: "-100px" }}
+              viewport={{ once: true }}
               transition={{ duration: 0.8, ease: "easeOut" }}
               className="relative sticky top-32"
             >
@@ -342,7 +311,6 @@ export default function Portfolio() {
                       {skills.map((skill) => (
                         <motion.span
                           key={skill}
-                          variants={itemVariants}
                           whileHover={{ scale: 1.05, backgroundColor: "rgba(34, 211, 238, 0.1)", borderColor: "rgba(34, 211, 238, 0.5)" }}
                           className="px-4 py-2 rounded-xl bg-white/5 border border-white/5 text-sm text-slate-300 font-medium transition-colors cursor-default"
                         >
